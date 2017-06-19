@@ -1,0 +1,912 @@
+// class version 50.0 (50)
+// access flags 0x21
+public class net/minecraftforge/fml/common/registry/GameRegistry {
+
+  // compiled from: GameRegistry.java
+  // access flags 0x2609
+  public static abstract INNERCLASS net/minecraftforge/fml/common/registry/GameRegistry$ItemStackHolder net/minecraftforge/fml/common/registry/GameRegistry ItemStackHolder
+  // access flags 0x2609
+  public static abstract INNERCLASS net/minecraftforge/fml/common/registry/GameRegistry$ObjectHolder net/minecraftforge/fml/common/registry/GameRegistry ObjectHolder
+  // access flags 0x4019
+  public final static enum INNERCLASS net/minecraftforge/fml/common/registry/GameRegistry$Type net/minecraftforge/fml/common/registry/GameRegistry Type
+  // access flags 0x8
+  static INNERCLASS net/minecraftforge/fml/common/registry/GameRegistry$1 null null
+
+  // access flags 0xA
+  // signature Ljava/util/Set<Lnet/minecraftforge/fml/common/IWorldGenerator;>;
+  // declaration: java.util.Set<net.minecraftforge.fml.common.IWorldGenerator>
+  private static Ljava/util/Set; worldGenerators
+
+  // access flags 0xA
+  // signature Ljava/util/Map<Lnet/minecraftforge/fml/common/IWorldGenerator;Ljava/lang/Integer;>;
+  // declaration: java.util.Map<net.minecraftforge.fml.common.IWorldGenerator, java.lang.Integer>
+  private static Ljava/util/Map; worldGeneratorIndex
+
+  // access flags 0xA
+  // signature Ljava/util/List<Lnet/minecraftforge/fml/common/IFuelHandler;>;
+  // declaration: java.util.List<net.minecraftforge.fml.common.IFuelHandler>
+  private static Ljava/util/List; fuelHandlers
+
+  // access flags 0xA
+  // signature Ljava/util/List<Lnet/minecraftforge/fml/common/IWorldGenerator;>;
+  // declaration: java.util.List<net.minecraftforge.fml.common.IWorldGenerator>
+  private static Ljava/util/List; sortedGeneratorList
+
+  // access flags 0xA
+  // signature Ljava/util/List<Lnet/minecraftforge/fml/common/IEntitySelectorFactory;>;
+  // declaration: java.util.List<net.minecraftforge.fml.common.IEntitySelectorFactory>
+  private static Ljava/util/List; entitySelectorFactories
+
+  // access flags 0x1
+  public <init>()V
+   L0
+    LINENUMBER 79 L0
+    ALOAD 0
+    INVOKESPECIAL java/lang/Object.<init> ()V
+    RETURN
+   L1
+    LOCALVARIABLE this Lnet/minecraftforge/fml/common/registry/GameRegistry; L0 L1 0
+    MAXSTACK = 1
+    MAXLOCALS = 1
+
+  // access flags 0x9
+  public static registerWorldGenerator(Lnet/minecraftforge/fml/common/IWorldGenerator;I)V
+   L0
+    LINENUMBER 96 L0
+    GETSTATIC net/minecraftforge/fml/common/registry/GameRegistry.worldGenerators : Ljava/util/Set;
+    ALOAD 0
+    INVOKEINTERFACE java/util/Set.add (Ljava/lang/Object;)Z
+    POP
+   L1
+    LINENUMBER 97 L1
+    GETSTATIC net/minecraftforge/fml/common/registry/GameRegistry.worldGeneratorIndex : Ljava/util/Map;
+    ALOAD 0
+    ILOAD 1
+    INVOKESTATIC java/lang/Integer.valueOf (I)Ljava/lang/Integer;
+    INVOKEINTERFACE java/util/Map.put (Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    POP
+   L2
+    LINENUMBER 98 L2
+    GETSTATIC net/minecraftforge/fml/common/registry/GameRegistry.sortedGeneratorList : Ljava/util/List;
+    IFNULL L3
+   L4
+    LINENUMBER 100 L4
+    ACONST_NULL
+    PUTSTATIC net/minecraftforge/fml/common/registry/GameRegistry.sortedGeneratorList : Ljava/util/List;
+   L3
+    LINENUMBER 102 L3
+   FRAME FULL [net/minecraftforge/fml/common/IWorldGenerator I] []
+    RETURN
+   L5
+    LOCALVARIABLE generator Lnet/minecraftforge/fml/common/IWorldGenerator; L0 L5 0
+    LOCALVARIABLE modGenerationWeight I L0 L5 1
+    MAXSTACK = 3
+    MAXLOCALS = 2
+
+  // access flags 0x89
+  public static transient varargs registerEntitySelector(Lnet/minecraftforge/fml/common/IEntitySelectorFactory;[Ljava/lang/String;)V
+   L0
+    LINENUMBER 118 L0
+    GETSTATIC net/minecraftforge/fml/common/registry/GameRegistry.entitySelectorFactories : Ljava/util/List;
+    ALOAD 0
+    INVOKEINTERFACE java/util/List.add (Ljava/lang/Object;)Z
+    POP
+   L1
+    LINENUMBER 119 L1
+    ALOAD 1
+    ASTORE 2
+    ALOAD 2
+    ARRAYLENGTH
+    ISTORE 3
+    ICONST_0
+    ISTORE 4
+   L2
+   FRAME FULL [net/minecraftforge/fml/common/IEntitySelectorFactory [Ljava/lang/String; [Ljava/lang/String; I I] []
+    ILOAD 4
+    ILOAD 3
+    IF_ICMPGE L3
+    ALOAD 2
+    ILOAD 4
+    AALOAD
+    ASTORE 5
+   L4
+    LINENUMBER 121 L4
+    ALOAD 5
+    INVOKESTATIC net/minecraft/command/EntitySelector.func_190826_c (Ljava/lang/String;)Ljava/lang/String;
+    POP
+   L5
+    LINENUMBER 119 L5
+    IINC 4 1
+    GOTO L2
+   L3
+    LINENUMBER 123 L3
+   FRAME FULL [net/minecraftforge/fml/common/IEntitySelectorFactory [Ljava/lang/String; [Ljava/lang/String; I I] []
+    RETURN
+   L6
+    LOCALVARIABLE s Ljava/lang/String; L4 L5 5
+    LOCALVARIABLE factory Lnet/minecraftforge/fml/common/IEntitySelectorFactory; L0 L6 0
+    LOCALVARIABLE arguments [Ljava/lang/String; L0 L6 1
+    MAXSTACK = 2
+    MAXLOCALS = 6
+
+  // access flags 0x9
+  // signature (Ljava/util/Map<Ljava/lang/String;Ljava/lang/String;>;Ljava/lang/String;Lnet/minecraft/command/ICommandSender;Lnet/minecraft/util/math/Vec3d;)Ljava/util/List<Lcom/google/common/base/Predicate<Lnet/minecraft/entity/Entity;>;>;
+  // declaration: java.util.List<com.google.common.base.Predicate<net.minecraft.entity.Entity>> createEntitySelectors(java.util.Map<java.lang.String, java.lang.String>, java.lang.String, net.minecraft.command.ICommandSender, net.minecraft.util.math.Vec3d)
+  public static createEntitySelectors(Ljava/util/Map;Ljava/lang/String;Lnet/minecraft/command/ICommandSender;Lnet/minecraft/util/math/Vec3d;)Ljava/util/List;
+    TRYCATCHBLOCK L0 L1 L2 java/lang/Exception
+   L3
+    LINENUMBER 131 L3
+    INVOKESTATIC com/google/common/collect/Lists.newArrayList ()Ljava/util/ArrayList;
+    ASTORE 4
+   L4
+    LINENUMBER 132 L4
+    GETSTATIC net/minecraftforge/fml/common/registry/GameRegistry.entitySelectorFactories : Ljava/util/List;
+    INVOKEINTERFACE java/util/List.iterator ()Ljava/util/Iterator;
+    ASTORE 5
+   L5
+   FRAME FULL [java/util/Map java/lang/String net/minecraft/command/ICommandSender net/minecraft/util/math/Vec3d java/util/ArrayList java/util/Iterator] []
+    ALOAD 5
+    INVOKEINTERFACE java/util/Iterator.hasNext ()Z
+    IFEQ L6
+    ALOAD 5
+    INVOKEINTERFACE java/util/Iterator.next ()Ljava/lang/Object;
+    CHECKCAST net/minecraftforge/fml/common/IEntitySelectorFactory
+    ASTORE 6
+   L0
+    LINENUMBER 136 L0
+    ALOAD 4
+    ALOAD 6
+    ALOAD 0
+    ALOAD 1
+    ALOAD 2
+    ALOAD 3
+    INVOKEINTERFACE net/minecraftforge/fml/common/IEntitySelectorFactory.createPredicates (Ljava/util/Map;Ljava/lang/String;Lnet/minecraft/command/ICommandSender;Lnet/minecraft/util/math/Vec3d;)Ljava/util/List;
+    INVOKEINTERFACE java/util/List.addAll (Ljava/util/Collection;)Z
+    POP
+   L1
+    LINENUMBER 142 L1
+    GOTO L7
+   L2
+    LINENUMBER 138 L2
+   FRAME FULL [java/util/Map java/lang/String net/minecraft/command/ICommandSender net/minecraft/util/math/Vec3d java/util/ArrayList java/util/Iterator net/minecraftforge/fml/common/IEntitySelectorFactory] [java/lang/Exception]
+    ASTORE 7
+   L8
+    LINENUMBER 140 L8
+    GETSTATIC org/apache/logging/log4j/Level.ERROR : Lorg/apache/logging/log4j/Level;
+    ALOAD 7
+    LDC "Exception caught during entity selector creation with %s for argument map %s of %s for %s at %s"
+    ICONST_5
+    ANEWARRAY java/lang/Object
+    DUP
+    ICONST_0
+    ALOAD 6
+    AASTORE
+    DUP
+    ICONST_1
+    ALOAD 0
+    AASTORE
+    DUP
+    ICONST_2
+    ALOAD 1
+    AASTORE
+    DUP
+    ICONST_3
+    ALOAD 2
+    AASTORE
+    DUP
+    ICONST_4
+    ALOAD 3
+    AASTORE
+    INVOKESTATIC net/minecraftforge/fml/common/FMLLog.log (Lorg/apache/logging/log4j/Level;Ljava/lang/Throwable;Ljava/lang/String;[Ljava/lang/Object;)V
+   L7
+    LINENUMBER 143 L7
+   FRAME FULL [java/util/Map java/lang/String net/minecraft/command/ICommandSender net/minecraft/util/math/Vec3d java/util/ArrayList java/util/Iterator net/minecraftforge/fml/common/IEntitySelectorFactory] []
+    GOTO L5
+   L6
+    LINENUMBER 144 L6
+   FRAME FULL [java/util/Map java/lang/String net/minecraft/command/ICommandSender net/minecraft/util/math/Vec3d java/util/ArrayList java/util/Iterator] []
+    ALOAD 4
+    ARETURN
+   L9
+    LOCALVARIABLE e Ljava/lang/Exception; L8 L7 7
+    LOCALVARIABLE factory Lnet/minecraftforge/fml/common/IEntitySelectorFactory; L0 L7 6
+    LOCALVARIABLE arguments Ljava/util/Map; L3 L9 0
+    // signature Ljava/util/Map<Ljava/lang/String;Ljava/lang/String;>;
+    // declaration: java.util.Map<java.lang.String, java.lang.String>
+    LOCALVARIABLE mainSelector Ljava/lang/String; L3 L9 1
+    LOCALVARIABLE sender Lnet/minecraft/command/ICommandSender; L3 L9 2
+    LOCALVARIABLE position Lnet/minecraft/util/math/Vec3d; L3 L9 3
+    LOCALVARIABLE selectors Ljava/util/List; L4 L9 4
+    // signature Ljava/util/List<Lcom/google/common/base/Predicate<Lnet/minecraft/entity/Entity;>;>;
+    // declaration: java.util.List<com.google.common.base.Predicate<net.minecraft.entity.Entity>>
+    MAXSTACK = 7
+    MAXLOCALS = 8
+
+  // access flags 0x9
+  public static generateWorld(IILnet/minecraft/world/World;Lnet/minecraft/world/chunk/IChunkGenerator;Lnet/minecraft/world/chunk/IChunkProvider;)V
+    ALOAD 2
+    ILOAD 0
+    ILOAD 1
+    INVOKESTATIC cofh/asm/hooks/ASMHooks.preGenerateWorld (Lnet/minecraft/world/World;II)V
+   L0
+    LINENUMBER 159 L0
+    GETSTATIC net/minecraftforge/fml/common/registry/GameRegistry.sortedGeneratorList : Ljava/util/List;
+    IFNONNULL L1
+   L2
+    LINENUMBER 161 L2
+    INVOKESTATIC net/minecraftforge/fml/common/registry/GameRegistry.computeSortedGeneratorList ()V
+   L1
+    LINENUMBER 163 L1
+   FRAME FULL [I I net/minecraft/world/World net/minecraft/world/chunk/IChunkGenerator net/minecraft/world/chunk/IChunkProvider] []
+    ALOAD 2
+    INVOKEVIRTUAL net/minecraft/world/World.func_72905_C ()J
+    LSTORE 5
+   L3
+    LINENUMBER 164 L3
+    NEW java/util/Random
+    DUP
+    LLOAD 5
+    INVOKESPECIAL java/util/Random.<init> (J)V
+    ASTORE 7
+   L4
+    LINENUMBER 165 L4
+    ALOAD 7
+    INVOKEVIRTUAL java/util/Random.nextLong ()J
+    ICONST_3
+    LSHR
+    LSTORE 8
+   L5
+    LINENUMBER 166 L5
+    ALOAD 7
+    INVOKEVIRTUAL java/util/Random.nextLong ()J
+    ICONST_3
+    LSHR
+    LSTORE 10
+   L6
+    LINENUMBER 167 L6
+    LLOAD 8
+    ILOAD 0
+    I2L
+    LMUL
+    LLOAD 10
+    ILOAD 1
+    I2L
+    LMUL
+    LADD
+    LLOAD 5
+    LXOR
+    LSTORE 12
+   L7
+    LINENUMBER 169 L7
+    GETSTATIC net/minecraftforge/fml/common/registry/GameRegistry.sortedGeneratorList : Ljava/util/List;
+    INVOKEINTERFACE java/util/List.iterator ()Ljava/util/Iterator;
+    ASTORE 14
+   L8
+   FRAME FULL [I I net/minecraft/world/World net/minecraft/world/chunk/IChunkGenerator net/minecraft/world/chunk/IChunkProvider J java/util/Random J J J java/util/Iterator] []
+    ALOAD 14
+    INVOKEINTERFACE java/util/Iterator.hasNext ()Z
+    IFEQ L9
+    ALOAD 14
+    INVOKEINTERFACE java/util/Iterator.next ()Ljava/lang/Object;
+    CHECKCAST net/minecraftforge/fml/common/IWorldGenerator
+    ASTORE 15
+   L10
+    LINENUMBER 171 L10
+    ALOAD 7
+    LLOAD 12
+    INVOKEVIRTUAL java/util/Random.setSeed (J)V
+   L11
+    LINENUMBER 172 L11
+    ALOAD 15
+    ALOAD 7
+    ILOAD 0
+    ILOAD 1
+    ALOAD 2
+    ALOAD 3
+    ALOAD 4
+    INVOKEINTERFACE net/minecraftforge/fml/common/IWorldGenerator.generate (Ljava/util/Random;IILnet/minecraft/world/World;Lnet/minecraft/world/chunk/IChunkGenerator;Lnet/minecraft/world/chunk/IChunkProvider;)V
+   L12
+    LINENUMBER 173 L12
+    GOTO L8
+   L9
+    LINENUMBER 174 L9
+   FRAME FULL [I I net/minecraft/world/World net/minecraft/world/chunk/IChunkGenerator net/minecraft/world/chunk/IChunkProvider J java/util/Random J J J java/util/Iterator] []
+    RETURN
+   L13
+   FRAME FULL [] [java/lang/Throwable]
+    NOP
+    NOP
+    NOP
+    NOP
+    NOP
+    ATHROW
+    LOCALVARIABLE generator Lnet/minecraftforge/fml/common/IWorldGenerator; L10 L12 15
+    LOCALVARIABLE chunkX I L0 L13 0
+    LOCALVARIABLE chunkZ I L0 L13 1
+    LOCALVARIABLE world Lnet/minecraft/world/World; L0 L13 2
+    LOCALVARIABLE chunkGenerator Lnet/minecraft/world/chunk/IChunkGenerator; L0 L13 3
+    LOCALVARIABLE chunkProvider Lnet/minecraft/world/chunk/IChunkProvider; L0 L13 4
+    LOCALVARIABLE worldSeed J L3 L13 5
+    LOCALVARIABLE fmlRandom Ljava/util/Random; L4 L13 7
+    LOCALVARIABLE xSeed J L5 L13 8
+    LOCALVARIABLE zSeed J L6 L13 10
+    LOCALVARIABLE chunkSeed J L7 L13 12
+    MAXSTACK = 7
+    MAXLOCALS = 16
+
+  // access flags 0xA
+  private static computeSortedGeneratorList()V
+   L0
+    LINENUMBER 178 L0
+    GETSTATIC net/minecraftforge/fml/common/registry/GameRegistry.worldGenerators : Ljava/util/Set;
+    INVOKESTATIC com/google/common/collect/Lists.newArrayList (Ljava/lang/Iterable;)Ljava/util/ArrayList;
+    ASTORE 0
+   L1
+    LINENUMBER 179 L1
+    ALOAD 0
+    NEW net/minecraftforge/fml/common/registry/GameRegistry$1
+    DUP
+    INVOKESPECIAL net/minecraftforge/fml/common/registry/GameRegistry$1.<init> ()V
+    INVOKESTATIC java/util/Collections.sort (Ljava/util/List;Ljava/util/Comparator;)V
+   L2
+    LINENUMBER 187 L2
+    ALOAD 0
+    INVOKESTATIC com/google/common/collect/ImmutableList.copyOf (Ljava/util/Collection;)Lcom/google/common/collect/ImmutableList;
+    PUTSTATIC net/minecraftforge/fml/common/registry/GameRegistry.sortedGeneratorList : Ljava/util/List;
+   L3
+    LINENUMBER 188 L3
+    RETURN
+   L4
+    LOCALVARIABLE list Ljava/util/ArrayList; L1 L4 0
+    // signature Ljava/util/ArrayList<Lnet/minecraftforge/fml/common/IWorldGenerator;>;
+    // declaration: java.util.ArrayList<net.minecraftforge.fml.common.IWorldGenerator>
+    MAXSTACK = 3
+    MAXLOCALS = 1
+
+  // access flags 0x9
+  // signature <K::Lnet/minecraftforge/fml/common/registry/IForgeRegistryEntry<*>;>(TK;)TK;
+  // declaration: K register<K extends net.minecraftforge.fml.common.registry.IForgeRegistryEntry<?>>(K)
+  public static register(Lnet/minecraftforge/fml/common/registry/IForgeRegistryEntry;)Lnet/minecraftforge/fml/common/registry/IForgeRegistryEntry;
+   L0
+    LINENUMBER 205 L0
+    ALOAD 0
+    INVOKESTATIC net/minecraftforge/fml/common/registry/GameData.register_impl (Ljava/lang/Object;)Lnet/minecraftforge/fml/common/registry/IForgeRegistryEntry;
+    ARETURN
+   L1
+    LOCALVARIABLE object Lnet/minecraftforge/fml/common/registry/IForgeRegistryEntry; L0 L1 0
+    // signature TK;
+    // declaration: K
+    MAXSTACK = 1
+    MAXLOCALS = 1
+
+  // access flags 0x9
+  // signature <K::Lnet/minecraftforge/fml/common/registry/IForgeRegistryEntry<*>;>(TK;Lnet/minecraft/util/ResourceLocation;)TK;
+  // declaration: K register<K extends net.minecraftforge.fml.common.registry.IForgeRegistryEntry<?>>(K, net.minecraft.util.ResourceLocation)
+  public static register(Lnet/minecraftforge/fml/common/registry/IForgeRegistryEntry;Lnet/minecraft/util/ResourceLocation;)Lnet/minecraftforge/fml/common/registry/IForgeRegistryEntry;
+   L0
+    LINENUMBER 225 L0
+    ALOAD 0
+    ALOAD 1
+    INVOKESTATIC net/minecraftforge/fml/common/registry/GameData.register_impl (Ljava/lang/Object;Lnet/minecraft/util/ResourceLocation;)Lnet/minecraftforge/fml/common/registry/IForgeRegistryEntry;
+    ARETURN
+   L1
+    LOCALVARIABLE object Lnet/minecraftforge/fml/common/registry/IForgeRegistryEntry; L0 L1 0
+    // signature TK;
+    // declaration: K
+    LOCALVARIABLE name Lnet/minecraft/util/ResourceLocation; L0 L1 1
+    MAXSTACK = 2
+    MAXLOCALS = 2
+
+  // DEPRECATED
+  // access flags 0x20009
+  public static registerWithItem(Lnet/minecraft/block/Block;)Lnet/minecraft/block/Block;
+  @Ljava/lang/Deprecated;()
+   L0
+    LINENUMBER 241 L0
+    ALOAD 0
+    INVOKESTATIC net/minecraftforge/fml/common/registry/GameRegistry.register (Lnet/minecraftforge/fml/common/registry/IForgeRegistryEntry;)Lnet/minecraftforge/fml/common/registry/IForgeRegistryEntry;
+    POP
+   L1
+    LINENUMBER 242 L1
+    NEW net/minecraft/item/ItemBlock
+    DUP
+    ALOAD 0
+    INVOKESPECIAL net/minecraft/item/ItemBlock.<init> (Lnet/minecraft/block/Block;)V
+    ALOAD 0
+    INVOKEVIRTUAL net/minecraft/block/Block.getRegistryName ()Lnet/minecraft/util/ResourceLocation;
+    INVOKEVIRTUAL net/minecraft/item/ItemBlock.setRegistryName (Lnet/minecraft/util/ResourceLocation;)Lnet/minecraftforge/fml/common/registry/IForgeRegistryEntry;
+    INVOKESTATIC net/minecraftforge/fml/common/registry/GameRegistry.register (Lnet/minecraftforge/fml/common/registry/IForgeRegistryEntry;)Lnet/minecraftforge/fml/common/registry/IForgeRegistryEntry;
+    POP
+   L2
+    LINENUMBER 243 L2
+    ALOAD 0
+    ARETURN
+   L3
+    LOCALVARIABLE block Lnet/minecraft/block/Block; L0 L3 0
+    MAXSTACK = 3
+    MAXLOCALS = 1
+
+  // access flags 0x9
+  // signature <K::Lnet/minecraftforge/fml/common/registry/IForgeRegistryEntry<TK;>;>(Ljava/lang/Class<TK;>;)Lnet/minecraftforge/fml/common/registry/IForgeRegistry<TK;>;
+  // declaration: net.minecraftforge.fml.common.registry.IForgeRegistry<K> findRegistry<K extends net.minecraftforge.fml.common.registry.IForgeRegistryEntry<K>>(java.lang.Class<K>)
+  public static findRegistry(Ljava/lang/Class;)Lnet/minecraftforge/fml/common/registry/IForgeRegistry;
+   L0
+    LINENUMBER 256 L0
+    ALOAD 0
+    INVOKESTATIC net/minecraftforge/fml/common/registry/PersistentRegistryManager.findRegistryByType (Ljava/lang/Class;)Lnet/minecraftforge/fml/common/registry/IForgeRegistry;
+    ARETURN
+   L1
+    LOCALVARIABLE registryType Ljava/lang/Class; L0 L1 0
+    // signature Ljava/lang/Class<TK;>;
+    // declaration: java.lang.Class<K>
+    MAXSTACK = 1
+    MAXLOCALS = 1
+
+  // access flags 0x9
+  public static addSubstitutionAlias(Ljava/lang/String;Lnet/minecraftforge/fml/common/registry/GameRegistry$Type;Ljava/lang/Object;)V throws net/minecraftforge/fml/common/registry/ExistingSubstitutionException 
+   L0
+    LINENUMBER 272 L0
+    INVOKESTATIC net/minecraftforge/fml/common/registry/GameData.getMain ()Lnet/minecraftforge/fml/common/registry/GameData;
+    ALOAD 0
+    ALOAD 1
+    ALOAD 2
+    INVOKEVIRTUAL net/minecraftforge/fml/common/registry/GameData.registerSubstitutionAlias (Ljava/lang/String;Lnet/minecraftforge/fml/common/registry/GameRegistry$Type;Ljava/lang/Object;)V
+   L1
+    LINENUMBER 273 L1
+    RETURN
+   L2
+    LOCALVARIABLE nameToSubstitute Ljava/lang/String; L0 L2 0
+    LOCALVARIABLE type Lnet/minecraftforge/fml/common/registry/GameRegistry$Type; L0 L2 1
+    LOCALVARIABLE object Ljava/lang/Object; L0 L2 2
+    MAXSTACK = 4
+    MAXLOCALS = 3
+
+  // access flags 0x89
+  public static transient varargs addRecipe(Lnet/minecraft/item/ItemStack;[Ljava/lang/Object;)V
+    @Ljavax/annotation/Nonnull;() // parameter 0
+   L0
+    LINENUMBER 277 L0
+    ALOAD 0
+    ALOAD 1
+    INVOKESTATIC net/minecraftforge/fml/common/registry/GameRegistry.addShapedRecipe (Lnet/minecraft/item/ItemStack;[Ljava/lang/Object;)Lnet/minecraft/item/crafting/IRecipe;
+    POP
+   L1
+    LINENUMBER 278 L1
+    RETURN
+   L2
+    LOCALVARIABLE output Lnet/minecraft/item/ItemStack; L0 L2 0
+    LOCALVARIABLE params [Ljava/lang/Object; L0 L2 1
+    MAXSTACK = 2
+    MAXLOCALS = 2
+
+  // access flags 0x89
+  public static transient varargs addShapedRecipe(Lnet/minecraft/item/ItemStack;[Ljava/lang/Object;)Lnet/minecraft/item/crafting/IRecipe;
+    @Ljavax/annotation/Nonnull;() // parameter 0
+   L0
+    LINENUMBER 282 L0
+    INVOKESTATIC net/minecraft/item/crafting/CraftingManager.func_77594_a ()Lnet/minecraft/item/crafting/CraftingManager;
+    ALOAD 0
+    ALOAD 1
+    INVOKEVIRTUAL net/minecraft/item/crafting/CraftingManager.func_92103_a (Lnet/minecraft/item/ItemStack;[Ljava/lang/Object;)Lnet/minecraft/item/crafting/ShapedRecipes;
+    ARETURN
+   L1
+    LOCALVARIABLE output Lnet/minecraft/item/ItemStack; L0 L1 0
+    LOCALVARIABLE params [Ljava/lang/Object; L0 L1 1
+    MAXSTACK = 3
+    MAXLOCALS = 2
+
+  // access flags 0x89
+  public static transient varargs addShapelessRecipe(Lnet/minecraft/item/ItemStack;[Ljava/lang/Object;)V
+    @Ljavax/annotation/Nonnull;() // parameter 0
+   L0
+    LINENUMBER 287 L0
+    INVOKESTATIC net/minecraft/item/crafting/CraftingManager.func_77594_a ()Lnet/minecraft/item/crafting/CraftingManager;
+    ALOAD 0
+    ALOAD 1
+    INVOKEVIRTUAL net/minecraft/item/crafting/CraftingManager.func_77596_b (Lnet/minecraft/item/ItemStack;[Ljava/lang/Object;)V
+   L1
+    LINENUMBER 288 L1
+    RETURN
+   L2
+    LOCALVARIABLE output Lnet/minecraft/item/ItemStack; L0 L2 0
+    LOCALVARIABLE params [Ljava/lang/Object; L0 L2 1
+    MAXSTACK = 3
+    MAXLOCALS = 2
+
+  // access flags 0x9
+  public static addRecipe(Lnet/minecraft/item/crafting/IRecipe;)V
+   L0
+    LINENUMBER 292 L0
+    INVOKESTATIC net/minecraft/item/crafting/CraftingManager.func_77594_a ()Lnet/minecraft/item/crafting/CraftingManager;
+    INVOKEVIRTUAL net/minecraft/item/crafting/CraftingManager.func_77592_b ()Ljava/util/List;
+    ALOAD 0
+    INVOKEINTERFACE java/util/List.add (Ljava/lang/Object;)Z
+    POP
+   L1
+    LINENUMBER 293 L1
+    RETURN
+   L2
+    LOCALVARIABLE recipe Lnet/minecraft/item/crafting/IRecipe; L0 L2 0
+    MAXSTACK = 2
+    MAXLOCALS = 1
+
+  // access flags 0x9
+  public static addSmelting(Lnet/minecraft/block/Block;Lnet/minecraft/item/ItemStack;F)V
+    @Ljavax/annotation/Nonnull;() // parameter 1
+   L0
+    LINENUMBER 297 L0
+    INVOKESTATIC net/minecraft/item/crafting/FurnaceRecipes.func_77602_a ()Lnet/minecraft/item/crafting/FurnaceRecipes;
+    ALOAD 0
+    ALOAD 1
+    FLOAD 2
+    INVOKEVIRTUAL net/minecraft/item/crafting/FurnaceRecipes.func_151393_a (Lnet/minecraft/block/Block;Lnet/minecraft/item/ItemStack;F)V
+   L1
+    LINENUMBER 298 L1
+    RETURN
+   L2
+    LOCALVARIABLE input Lnet/minecraft/block/Block; L0 L2 0
+    LOCALVARIABLE output Lnet/minecraft/item/ItemStack; L0 L2 1
+    LOCALVARIABLE xp F L0 L2 2
+    MAXSTACK = 4
+    MAXLOCALS = 3
+
+  // access flags 0x9
+  public static addSmelting(Lnet/minecraft/item/Item;Lnet/minecraft/item/ItemStack;F)V
+    @Ljavax/annotation/Nonnull;() // parameter 1
+   L0
+    LINENUMBER 302 L0
+    INVOKESTATIC net/minecraft/item/crafting/FurnaceRecipes.func_77602_a ()Lnet/minecraft/item/crafting/FurnaceRecipes;
+    ALOAD 0
+    ALOAD 1
+    FLOAD 2
+    INVOKEVIRTUAL net/minecraft/item/crafting/FurnaceRecipes.func_151396_a (Lnet/minecraft/item/Item;Lnet/minecraft/item/ItemStack;F)V
+   L1
+    LINENUMBER 303 L1
+    RETURN
+   L2
+    LOCALVARIABLE input Lnet/minecraft/item/Item; L0 L2 0
+    LOCALVARIABLE output Lnet/minecraft/item/ItemStack; L0 L2 1
+    LOCALVARIABLE xp F L0 L2 2
+    MAXSTACK = 4
+    MAXLOCALS = 3
+
+  // access flags 0x9
+  public static addSmelting(Lnet/minecraft/item/ItemStack;Lnet/minecraft/item/ItemStack;F)V
+    @Ljavax/annotation/Nonnull;() // parameter 0
+    @Ljavax/annotation/Nonnull;() // parameter 1
+   L0
+    LINENUMBER 307 L0
+    INVOKESTATIC net/minecraft/item/crafting/FurnaceRecipes.func_77602_a ()Lnet/minecraft/item/crafting/FurnaceRecipes;
+    ALOAD 0
+    ALOAD 1
+    FLOAD 2
+    INVOKEVIRTUAL net/minecraft/item/crafting/FurnaceRecipes.func_151394_a (Lnet/minecraft/item/ItemStack;Lnet/minecraft/item/ItemStack;F)V
+   L1
+    LINENUMBER 308 L1
+    RETURN
+   L2
+    LOCALVARIABLE input Lnet/minecraft/item/ItemStack; L0 L2 0
+    LOCALVARIABLE output Lnet/minecraft/item/ItemStack; L0 L2 1
+    LOCALVARIABLE xp F L0 L2 2
+    MAXSTACK = 4
+    MAXLOCALS = 3
+
+  // access flags 0x9
+  // signature (Ljava/lang/Class<+Lnet/minecraft/tileentity/TileEntity;>;Ljava/lang/String;)V
+  // declaration: void registerTileEntity(java.lang.Class<? extends net.minecraft.tileentity.TileEntity>, java.lang.String)
+  public static registerTileEntity(Ljava/lang/Class;Ljava/lang/String;)V
+   L0
+    LINENUMBER 312 L0
+    INVOKESTATIC net/minecraftforge/fml/common/registry/GameData.getTileEntityRegistry ()Lnet/minecraftforge/fml/common/registry/LegacyNamespacedRegistry;
+    NEW net/minecraft/util/ResourceLocation
+    DUP
+    ALOAD 1
+    INVOKESPECIAL net/minecraft/util/ResourceLocation.<init> (Ljava/lang/String;)V
+    ALOAD 0
+    INVOKEVIRTUAL net/minecraftforge/fml/common/registry/LegacyNamespacedRegistry.func_82595_a (Ljava/lang/Object;Ljava/lang/Object;)V
+   L1
+    LINENUMBER 313 L1
+    RETURN
+   L2
+    LOCALVARIABLE tileEntityClass Ljava/lang/Class; L0 L2 0
+    // signature Ljava/lang/Class<+Lnet/minecraft/tileentity/TileEntity;>;
+    // declaration: java.lang.Class<? extends net.minecraft.tileentity.TileEntity>
+    LOCALVARIABLE id Ljava/lang/String; L0 L2 1
+    MAXSTACK = 4
+    MAXLOCALS = 2
+
+  // access flags 0x89
+  // signature (Ljava/lang/Class<+Lnet/minecraft/tileentity/TileEntity;>;Ljava/lang/String;[Ljava/lang/String;)V
+  // declaration: void registerTileEntityWithAlternatives(java.lang.Class<? extends net.minecraft.tileentity.TileEntity>, java.lang.String, java.lang.String[])
+  public static transient varargs registerTileEntityWithAlternatives(Ljava/lang/Class;Ljava/lang/String;[Ljava/lang/String;)V
+   L0
+    LINENUMBER 325 L0
+    ALOAD 0
+    ALOAD 1
+    INVOKESTATIC net/minecraftforge/fml/common/registry/GameRegistry.registerTileEntity (Ljava/lang/Class;Ljava/lang/String;)V
+   L1
+    LINENUMBER 326 L1
+    ALOAD 2
+    ASTORE 3
+    ALOAD 3
+    ARRAYLENGTH
+    ISTORE 4
+    ICONST_0
+    ISTORE 5
+   L2
+   FRAME FULL [java/lang/Class java/lang/String [Ljava/lang/String; [Ljava/lang/String; I I] []
+    ILOAD 5
+    ILOAD 4
+    IF_ICMPGE L3
+    ALOAD 3
+    ILOAD 5
+    AALOAD
+    ASTORE 6
+   L4
+    LINENUMBER 328 L4
+    INVOKESTATIC net/minecraftforge/fml/common/registry/GameData.getTileEntityRegistry ()Lnet/minecraftforge/fml/common/registry/LegacyNamespacedRegistry;
+    NEW net/minecraft/util/ResourceLocation
+    DUP
+    ALOAD 6
+    INVOKESPECIAL net/minecraft/util/ResourceLocation.<init> (Ljava/lang/String;)V
+    NEW net/minecraft/util/ResourceLocation
+    DUP
+    ALOAD 1
+    INVOKESPECIAL net/minecraft/util/ResourceLocation.<init> (Ljava/lang/String;)V
+    INVOKEVIRTUAL net/minecraftforge/fml/common/registry/LegacyNamespacedRegistry.addLegacyName (Lnet/minecraft/util/ResourceLocation;Lnet/minecraft/util/ResourceLocation;)V
+   L5
+    LINENUMBER 326 L5
+    IINC 5 1
+    GOTO L2
+   L3
+    LINENUMBER 330 L3
+   FRAME FULL [java/lang/Class java/lang/String [Ljava/lang/String; [Ljava/lang/String; I I] []
+    RETURN
+   L6
+    LOCALVARIABLE s Ljava/lang/String; L4 L5 6
+    LOCALVARIABLE tileEntityClass Ljava/lang/Class; L0 L6 0
+    // signature Ljava/lang/Class<+Lnet/minecraft/tileentity/TileEntity;>;
+    // declaration: java.lang.Class<? extends net.minecraft.tileentity.TileEntity>
+    LOCALVARIABLE id Ljava/lang/String; L0 L6 1
+    LOCALVARIABLE alternatives [Ljava/lang/String; L0 L6 2
+    MAXSTACK = 5
+    MAXLOCALS = 7
+
+  // access flags 0x9
+  public static registerFuelHandler(Lnet/minecraftforge/fml/common/IFuelHandler;)V
+   L0
+    LINENUMBER 334 L0
+    GETSTATIC net/minecraftforge/fml/common/registry/GameRegistry.fuelHandlers : Ljava/util/List;
+    ALOAD 0
+    INVOKEINTERFACE java/util/List.add (Ljava/lang/Object;)Z
+    POP
+   L1
+    LINENUMBER 335 L1
+    RETURN
+   L2
+    LOCALVARIABLE handler Lnet/minecraftforge/fml/common/IFuelHandler; L0 L2 0
+    MAXSTACK = 2
+    MAXLOCALS = 1
+
+  // access flags 0x9
+  public static getFuelValue(Lnet/minecraft/item/ItemStack;)I
+    @Ljavax/annotation/Nonnull;() // parameter 0
+   L0
+    LINENUMBER 339 L0
+    ICONST_0
+    ISTORE 1
+   L1
+    LINENUMBER 340 L1
+    GETSTATIC net/minecraftforge/fml/common/registry/GameRegistry.fuelHandlers : Ljava/util/List;
+    INVOKEINTERFACE java/util/List.iterator ()Ljava/util/Iterator;
+    ASTORE 2
+   L2
+   FRAME FULL [net/minecraft/item/ItemStack I java/util/Iterator] []
+    ALOAD 2
+    INVOKEINTERFACE java/util/Iterator.hasNext ()Z
+    IFEQ L3
+    ALOAD 2
+    INVOKEINTERFACE java/util/Iterator.next ()Ljava/lang/Object;
+    CHECKCAST net/minecraftforge/fml/common/IFuelHandler
+    ASTORE 3
+   L4
+    LINENUMBER 342 L4
+    ILOAD 1
+    ALOAD 3
+    ALOAD 0
+    INVOKEINTERFACE net/minecraftforge/fml/common/IFuelHandler.getBurnTime (Lnet/minecraft/item/ItemStack;)I
+    INVOKESTATIC java/lang/Math.max (II)I
+    ISTORE 1
+   L5
+    LINENUMBER 343 L5
+    GOTO L2
+   L3
+    LINENUMBER 344 L3
+   FRAME FULL [net/minecraft/item/ItemStack I java/util/Iterator] []
+    ILOAD 1
+    IRETURN
+   L6
+    LOCALVARIABLE handler Lnet/minecraftforge/fml/common/IFuelHandler; L4 L5 3
+    LOCALVARIABLE itemStack Lnet/minecraft/item/ItemStack; L0 L6 0
+    LOCALVARIABLE fuelValue I L1 L6 1
+    MAXSTACK = 3
+    MAXLOCALS = 4
+
+  // access flags 0x9
+  public static makeItemStack(Ljava/lang/String;IILjava/lang/String;)Lnet/minecraft/item/ItemStack;
+  @Ljavax/annotation/Nonnull;()
+    TRYCATCHBLOCK L0 L1 L2 net/minecraft/nbt/NBTException
+   L3
+    LINENUMBER 420 L3
+    ALOAD 0
+    IFNONNULL L4
+   L5
+    LINENUMBER 422 L5
+    NEW java/lang/IllegalArgumentException
+    DUP
+    LDC "The itemName cannot be null"
+    INVOKESPECIAL java/lang/IllegalArgumentException.<init> (Ljava/lang/String;)V
+    ATHROW
+   L4
+    LINENUMBER 424 L4
+   FRAME FULL [java/lang/String I I java/lang/String] []
+    INVOKESTATIC net/minecraftforge/fml/common/registry/GameData.getItemRegistry ()Lnet/minecraftforge/fml/common/registry/FMLControlledNamespacedRegistry;
+    NEW net/minecraft/util/ResourceLocation
+    DUP
+    ALOAD 0
+    INVOKESPECIAL net/minecraft/util/ResourceLocation.<init> (Ljava/lang/String;)V
+    INVOKEVIRTUAL net/minecraftforge/fml/common/registry/FMLControlledNamespacedRegistry.getObject (Lnet/minecraft/util/ResourceLocation;)Lnet/minecraftforge/fml/common/registry/IForgeRegistryEntry;
+    CHECKCAST net/minecraft/item/Item
+    ASTORE 4
+   L6
+    LINENUMBER 425 L6
+    ALOAD 4
+    IFNONNULL L7
+   L8
+    LINENUMBER 427 L8
+    INVOKESTATIC net/minecraftforge/fml/common/FMLLog.getLogger ()Lorg/apache/logging/log4j/Logger;
+    GETSTATIC org/apache/logging/log4j/Level.TRACE : Lorg/apache/logging/log4j/Level;
+    LDC "Unable to find item with name {}"
+    ICONST_1
+    ANEWARRAY java/lang/Object
+    DUP
+    ICONST_0
+    ALOAD 0
+    AASTORE
+    INVOKEINTERFACE org/apache/logging/log4j/Logger.log (Lorg/apache/logging/log4j/Level;Ljava/lang/String;[Ljava/lang/Object;)V
+   L9
+    LINENUMBER 428 L9
+    GETSTATIC net/minecraft/item/ItemStack.field_190927_a : Lnet/minecraft/item/ItemStack;
+    ARETURN
+   L7
+    LINENUMBER 430 L7
+   FRAME FULL [java/lang/String I I java/lang/String net/minecraft/item/Item] []
+    NEW net/minecraft/item/ItemStack
+    DUP
+    ALOAD 4
+    ILOAD 2
+    ILOAD 1
+    INVOKESPECIAL net/minecraft/item/ItemStack.<init> (Lnet/minecraft/item/Item;II)V
+    ASTORE 5
+   L10
+    LINENUMBER 431 L10
+    ALOAD 3
+    INVOKESTATIC com/google/common/base/Strings.isNullOrEmpty (Ljava/lang/String;)Z
+    IFNE L11
+   L12
+    LINENUMBER 433 L12
+    ACONST_NULL
+    ASTORE 6
+   L0
+    LINENUMBER 436 L0
+    ALOAD 3
+    INVOKESTATIC net/minecraft/nbt/JsonToNBT.func_180713_a (Ljava/lang/String;)Lnet/minecraft/nbt/NBTTagCompound;
+    ASTORE 6
+   L1
+    LINENUMBER 441 L1
+    GOTO L13
+   L2
+    LINENUMBER 437 L2
+   FRAME FULL [java/lang/String I I java/lang/String net/minecraft/item/Item net/minecraft/item/ItemStack net/minecraft/nbt/NBTTagCompound] [net/minecraft/nbt/NBTException]
+    ASTORE 7
+   L14
+    LINENUMBER 439 L14
+    INVOKESTATIC net/minecraftforge/fml/common/FMLLog.getLogger ()Lorg/apache/logging/log4j/Logger;
+    GETSTATIC org/apache/logging/log4j/Level.WARN : Lorg/apache/logging/log4j/Level;
+    LDC "Encountered an exception parsing ItemStack NBT string {}"
+    ICONST_2
+    ANEWARRAY java/lang/Object
+    DUP
+    ICONST_0
+    ALOAD 3
+    AASTORE
+    DUP
+    ICONST_1
+    ALOAD 7
+    AASTORE
+    INVOKEINTERFACE org/apache/logging/log4j/Logger.log (Lorg/apache/logging/log4j/Level;Ljava/lang/String;[Ljava/lang/Object;)V
+   L15
+    LINENUMBER 440 L15
+    ALOAD 7
+    INVOKESTATIC com/google/common/base/Throwables.propagate (Ljava/lang/Throwable;)Ljava/lang/RuntimeException;
+    ATHROW
+   L13
+    LINENUMBER 442 L13
+   FRAME FULL [java/lang/String I I java/lang/String net/minecraft/item/Item net/minecraft/item/ItemStack net/minecraft/nbt/NBTTagCompound] []
+    ALOAD 6
+    INSTANCEOF net/minecraft/nbt/NBTTagCompound
+    IFNE L16
+   L17
+    LINENUMBER 444 L17
+    INVOKESTATIC net/minecraftforge/fml/common/FMLLog.getLogger ()Lorg/apache/logging/log4j/Logger;
+    GETSTATIC org/apache/logging/log4j/Level.WARN : Lorg/apache/logging/log4j/Level;
+    LDC "Unexpected NBT string - multiple values {}"
+    ICONST_1
+    ANEWARRAY java/lang/Object
+    DUP
+    ICONST_0
+    ALOAD 3
+    AASTORE
+    INVOKEINTERFACE org/apache/logging/log4j/Logger.log (Lorg/apache/logging/log4j/Level;Ljava/lang/String;[Ljava/lang/Object;)V
+   L18
+    LINENUMBER 445 L18
+    NEW java/lang/RuntimeException
+    DUP
+    LDC "Invalid NBT JSON"
+    INVOKESPECIAL java/lang/RuntimeException.<init> (Ljava/lang/String;)V
+    ATHROW
+   L16
+    LINENUMBER 449 L16
+   FRAME FULL [java/lang/String I I java/lang/String net/minecraft/item/Item net/minecraft/item/ItemStack net/minecraft/nbt/NBTTagCompound] []
+    ALOAD 5
+    ALOAD 6
+    CHECKCAST net/minecraft/nbt/NBTTagCompound
+    INVOKEVIRTUAL net/minecraft/item/ItemStack.func_77982_d (Lnet/minecraft/nbt/NBTTagCompound;)V
+   L11
+    LINENUMBER 452 L11
+   FRAME FULL [java/lang/String I I java/lang/String net/minecraft/item/Item net/minecraft/item/ItemStack] []
+    ALOAD 5
+    ARETURN
+   L19
+    LOCALVARIABLE e Lnet/minecraft/nbt/NBTException; L14 L13 7
+    LOCALVARIABLE nbttag Lnet/minecraft/nbt/NBTBase; L0 L11 6
+    LOCALVARIABLE itemName Ljava/lang/String; L3 L19 0
+    LOCALVARIABLE meta I L3 L19 1
+    LOCALVARIABLE stackSize I L3 L19 2
+    LOCALVARIABLE nbtString Ljava/lang/String; L3 L19 3
+    LOCALVARIABLE item Lnet/minecraft/item/Item; L6 L19 4
+    LOCALVARIABLE is Lnet/minecraft/item/ItemStack; L10 L19 5
+    MAXSTACK = 7
+    MAXLOCALS = 8
+
+  // access flags 0x1008
+  static synthetic access$000()Ljava/util/Map;
+   L0
+    LINENUMBER 79 L0
+    GETSTATIC net/minecraftforge/fml/common/registry/GameRegistry.worldGeneratorIndex : Ljava/util/Map;
+    ARETURN
+    MAXSTACK = 1
+    MAXLOCALS = 0
+
+  // access flags 0x8
+  static <clinit>()V
+   L0
+    LINENUMBER 81 L0
+    INVOKESTATIC com/google/common/collect/Sets.newHashSet ()Ljava/util/HashSet;
+    PUTSTATIC net/minecraftforge/fml/common/registry/GameRegistry.worldGenerators : Ljava/util/Set;
+   L1
+    LINENUMBER 82 L1
+    INVOKESTATIC com/google/common/collect/Maps.newHashMap ()Ljava/util/HashMap;
+    PUTSTATIC net/minecraftforge/fml/common/registry/GameRegistry.worldGeneratorIndex : Ljava/util/Map;
+   L2
+    LINENUMBER 83 L2
+    INVOKESTATIC com/google/common/collect/Lists.newArrayList ()Ljava/util/ArrayList;
+    PUTSTATIC net/minecraftforge/fml/common/registry/GameRegistry.fuelHandlers : Ljava/util/List;
+   L3
+    LINENUMBER 85 L3
+    INVOKESTATIC com/google/common/collect/Lists.newArrayList ()Ljava/util/ArrayList;
+    PUTSTATIC net/minecraftforge/fml/common/registry/GameRegistry.entitySelectorFactories : Ljava/util/List;
+    RETURN
+    MAXSTACK = 1
+    MAXLOCALS = 0
+}
